@@ -1,0 +1,61 @@
+pipeline {
+    agent any
+    
+    environment {
+        // Update with your image repository name and credentials ID
+        IMAGE = 'shtemeron/petclinic'
+        DOCKER_CREDENTIALS_ID = 'REPOS_LOGIN'
+        GIT_CREDENTIALS_ID = 'REPOS_LOGIN'
+    }
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                // Cloning the repository that triggered the push
+                git credentialsId: "${GIT_CREDENTIALS_ID}", url: 'https://github.com/shtemeron/my_petclinic.git'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    // Building the Docker image
+                    sh 'docker build -t ${IMAGE}:${BUILD_NUMBER} .'
+                }
+            }
+        }
+
+        stage('Tag Docker Image') {
+            steps {
+                script {
+                    // Tagging the image with 'latest' and the build number
+                    sh 'docker tag ${IMAGE}:${BUILD_NUMBER} ${IMAGE}:latest'
+                }
+            }
+        }
+
+        stage('Push Docker Image to GitHub Container Registry') {
+            steps {
+                script {
+                    // Logging in to Docker Hub using REPOS_LOGIN credentials
+                    withCredentials([usernamePassword(credentialsId: "${DOCKER_CREDENTIALS_ID}", usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                        sh 'echo ${DOCKER_PASS} | docker login -u ${DOCKER_USER} --password-stdin'
+                    }
+                    
+                    // Pushing both tags to the registry
+                    sh 'docker push ${IMAGE}:${BUILD_NUMBER}'
+                    sh 'docker push ${IMAGE}:latest'
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Docker image build and push successful!'
+        }
+        failure {
+            echo 'Docker image build or push failed.'
+        }
+    }
+}

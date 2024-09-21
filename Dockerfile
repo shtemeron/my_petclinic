@@ -11,6 +11,7 @@ RUN ./mvnw package
 
 #FROM openjdk:8-jre
 #FROM openjdk:17-alpine
+
 FROM openjdk:18-alpine
 WORKDIR /code
 COPY --from=build /app/target/*.jar /code/

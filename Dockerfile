@@ -1,11 +1,12 @@
-FROM newtmitch/sonar-scanner AS sonarqube
+FROM sonarsource/sonar-scanner-cli AS sonarqube
 WORKDIR /usr/src
 COPY . /usr/src/
 RUN sonar-scanner \
-  -Dsonar.projectKey=petclinic-new \
+  -Dsonar.projectKey=my-project \
   -Dsonar.projectBaseDir=/usr/src \
-  -Dsonar.host.url=http://127.0.0.1:9000 \
-  -Dsonar.token=sqp_8f4e34813439afb7dc07d2961fc7224b41c2b79b
+  -Dsonar.host.url=https://172.17.0.2:9000 \
+  -Dsonar.exclusions=**/*.java \
+  -Dsonar.token=sqp_d3eec411d6061cc9bf6b7c622fd96f31efd8d55d
 
 FROM maven:3.8.7-openjdk-18 AS build
 WORKDIR /app
@@ -13,8 +14,6 @@ COPY . /app
 RUN chmod +x ./mvnw
 RUN ./mvnw package
 
-#FROM openjdk:8-jre
-#FROM openjdk:17-alpine
 
 FROM openjdk:18-alpine
 WORKDIR /code

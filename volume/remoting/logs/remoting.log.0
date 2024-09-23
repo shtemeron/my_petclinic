@@ -1,23 +1,23 @@
-Sep 20, 2024 12:41:56 PM hudson.remoting.Launcher$CuiListener status
+Sep 23, 2024 2:10:12 PM hudson.remoting.Launcher$CuiListener status
 INFO: Locating server among [http://jenkins:8080/]
-Sep 20, 2024 12:41:56 PM org.jenkinsci.remoting.engine.JnlpAgentEndpointResolver resolve
+Sep 23, 2024 2:10:12 PM org.jenkinsci.remoting.engine.JnlpAgentEndpointResolver resolve
 INFO: Remoting server accepts the following protocols: [JNLP4-connect, Ping]
-Sep 20, 2024 12:41:56 PM hudson.remoting.Launcher$CuiListener status
+Sep 23, 2024 2:10:12 PM hudson.remoting.Launcher$CuiListener status
 INFO: Agent discovery successful
   Agent address: jenkins
   Agent port:    50000
-  Identity:      6e:bf:09:2c:dd:41:f0:f7:0c:37:2b:92:2e:9a:56:f9
-Sep 20, 2024 12:41:56 PM hudson.remoting.Launcher$CuiListener status
+  Identity:      6d:ba:8d:94:5b:c8:29:5b:6c:ef:f4:ad:05:06:81:95
+Sep 23, 2024 2:10:12 PM hudson.remoting.Launcher$CuiListener status
 INFO: Handshaking
-Sep 20, 2024 12:41:56 PM hudson.remoting.Launcher$CuiListener status
+Sep 23, 2024 2:10:12 PM hudson.remoting.Launcher$CuiListener status
 INFO: Connecting to jenkins:50000
-Sep 20, 2024 12:41:56 PM hudson.remoting.Launcher$CuiListener status
+Sep 23, 2024 2:10:12 PM hudson.remoting.Launcher$CuiListener status
 INFO: Server reports protocol JNLP4-connect-proxy not supported, skipping
-Sep 20, 2024 12:41:56 PM hudson.remoting.Launcher$CuiListener status
+Sep 23, 2024 2:10:12 PM hudson.remoting.Launcher$CuiListener status
 INFO: Trying protocol: JNLP4-connect
-Sep 20, 2024 12:41:56 PM org.jenkinsci.remoting.protocol.impl.BIONetworkLayer$Reader run
+Sep 23, 2024 2:10:12 PM org.jenkinsci.remoting.protocol.impl.BIONetworkLayer$Reader run
 INFO: Waiting for ProtocolStack to start.
-Sep 20, 2024 12:41:57 PM hudson.remoting.Launcher$CuiListener status
-INFO: Remote identity confirmed: 6e:bf:09:2c:dd:41:f0:f7:0c:37:2b:92:2e:9a:56:f9
-Sep 20, 2024 12:41:57 PM hudson.remoting.Launcher$CuiListener status
+Sep 23, 2024 2:10:13 PM hudson.remoting.Launcher$CuiListener status
+INFO: Remote identity confirmed: 6d:ba:8d:94:5b:c8:29:5b:6c:ef:f4:ad:05:06:81:95
+Sep 23, 2024 2:10:13 PM hudson.remoting.Launcher$CuiListener status
 INFO: Connected

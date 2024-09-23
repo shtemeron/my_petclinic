@@ -1,11 +1,7 @@
 FROM newtmitch/sonar-scanner AS sonarqube
 WORKDIR /usr/src
 COPY . /usr/src/
-RUN sonar-scanner \
-  -Dsonar.projectKey=petclinic-new \
-  -Dsonar.sources=. \
-  -Dsonar.host.url=http://127.0.0.1:9000 \
-  -Dsonar.token=sqp_8f4e34813439afb7dc07d2961fc7224b41c2b79b
+RUN sonar-scanner -Dsonar.projectBaseDir=/usr/src
 
 FROM maven:3.8.7-openjdk-18 AS build
 WORKDIR /app
